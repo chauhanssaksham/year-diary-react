@@ -1,0 +1,11 @@
+{
+  "name": "year-diary-react",
+  "version": "1.0.0",
+  "description": "An year diary application created in React",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Saksham",
+  "license": "ISC"
+}
