@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://saksham1:lAIka1318!mONgo@yeardiary-c1m3c.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "HelloJi"
+}
