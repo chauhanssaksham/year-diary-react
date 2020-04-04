@@ -15,7 +15,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 
-app.use('/', require('./routes/'));
+app.use('/', require('./routes'));
 
 if (process.env.NODE_ENV === 'production'){
     //Set static folder
