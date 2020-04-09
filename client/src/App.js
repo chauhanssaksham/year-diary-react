@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
-import './App.css';
+import './styles/App.scss';
 // import M from 'materialize-css/dist/js/materialize.min.js';
 import LoginForm from './components/Login/LoginForm'
 
