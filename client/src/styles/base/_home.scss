@@ -1,0 +1,12 @@
+.main{
+    height:100vh;
+    margin-bottom:0;
+    & > .col{
+        // background:blue;
+        min-height:100%;
+    }
+    .right-section{
+        // background: linear-gradient(225deg, #4c4c4ced, #0f0f0f);
+        @include right-section-bg;
+    }
+}

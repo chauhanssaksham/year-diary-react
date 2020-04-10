@@ -62,7 +62,7 @@ const LoginForm = () => {
                                     </button>
                             </div>
                             <div className="col s10 offset-s1 center">
-                                   <p className="blue-text"><Link to="/login">Already a user? Log-in here</Link></p>
+                                   <p className="blue-text"><Link to="/">Already a user? Log-in here</Link></p>
                             </div>
                             </div>
                         </form>
