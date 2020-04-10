@@ -1,4 +1,4 @@
-# Year-Diary
+ # Year-Diary
 
 An app that emulates a physical year diary, and is used to manage day-to-day task management, user-wise.
 The basic idea is to emulate a physical year diary on a web app, and keep it as simple as possible.
@@ -8,7 +8,7 @@ The basic idea is to emulate a physical year diary on a web app, and keep it as 
 This project is built on nodeJS, at the time of creation it has **node version v12.13.0** and **npm version v6.13.7**
 
 1. Clone this code in  a folder, and run `npm install` to install the packages required
-2. Navigate to the working folder on terminal, and run `npm start` to run a deployment version
+2. Navigate to the working folder on terminal, and run `npm start` to run a development version
 
 ## Roadmap - Ideas, ToDos, etc.
 
@@ -41,8 +41,8 @@ until finished
 End with an example of getting some data out of the system or using it for a little demo -->
 
 ### Contributions:
-Fork me on [Github](https://github.com/chauhanssaksham/year-diary)
-Using the [Git workflow](https://nvie.com/posts/a-successful-git-branching-model/) to maintain the project consistency.
+
+Fork on [Github](https://github.com/chauhanssaksham/year-diary)
 
 ## Running the tests
 

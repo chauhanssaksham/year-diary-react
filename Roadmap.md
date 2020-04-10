@@ -11,7 +11,7 @@ Users should have a Users page where:
 
 
 ### The basic requirements (For V1.0):
-Release 1.0 and onwards will feature the basic functionality that gets the app _working and deployed (i.e., production ready)_ on **Desktop sites**. There will be less focus on the fronted and UI and more on the basic functionality.
+Release 1.0 and onwards will feature the basic functionality that gets the app _working and deployed (i.e., production ready)_. There will be less focus on the fronted and UI and more on the basic functionality.
 
 #### The basic funcitonality for Release 1.0:
 * Basic good looking UI
@@ -26,7 +26,7 @@ Release 1.0 and onwards will feature the basic functionality that gets the app _
 	* Use docker? To host the running website on AWS or Heroku
 
 ### The Requirements for Release 2.0: 
-For this release, my main focus will be to make this app more UI powerful, so my main focus will be on the front-end UI, security checks, and making the website mobile-friendly, and to pretty up things. Use Javascript libraries or React to create year navigation, etc. etc.
+For this release, my main focus will be to make this app more UI powerful, so my main focus will be on the front-end UI, security checks, and to pretty up things. Use Javascript libraries or React to create year navigation, etc. etc.
 
 #### Basic requirements for Release 2.0:
 * A beautiful home-page, when the user isn't logged in. Should show sign-up and sign-in options. Should resemble the cover of a physical year diary.
