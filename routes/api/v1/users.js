@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const usersV1Api = require('../../../controllers/api/v1/userController');
+const userController = require('../../../controllers/api/v1/userController');
 const { check } = require('express-validator');
 
 //@route                POST api/v1/users
@@ -14,6 +14,6 @@ router.post('/', [
     check('email', 'Please include a valid Email').isEmail(),
     // password must be at least 5 chars long
     check('password', 'Please enter a password with 6 or more characters').isLength({ min: 6 })
-], usersV1Api.addUser );
+], userController.addUser );
 
 module.exports = router;

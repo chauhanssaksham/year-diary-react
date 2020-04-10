@@ -1,14 +1,21 @@
 import React, {Fragment} from 'react';
-import 'materialize-css/dist/css/materialize.min.css';
+import {Redirect, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './styles/App.scss';
-// import M from 'materialize-css/dist/js/materialize.min.js';
-import LoginForm from './components/Login/LoginForm'
+// import './styles/materialize/js/bin/materialize.js';
+import LoginForm from './components/Auth/LoginForm'
+import SignUpForm from './components/Auth/SignUpForm'
 
 function App() {
   return (
+    <Router>
     <Fragment>
-        <LoginForm />
+    {/* <Redirect to='/login' /> */}
+    <Switch>
+        <Route exact path='/login' component={LoginForm} />
+        <Route exact path='/signup' component={SignUpForm} />
+    </Switch>
     </Fragment>
+    </Router>
   );
 }
 
