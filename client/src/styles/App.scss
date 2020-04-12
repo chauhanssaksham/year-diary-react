@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans:ital,wght@1,300&display=swap');
+
 @import "./materialize/materialize";
 @import "./base/variables";
 @import "./base/base";
 @import "./base/home";
-@import "./components/_auth";
+@import './components/homePage';
+@import "./components/auth";
