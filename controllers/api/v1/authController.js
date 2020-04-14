@@ -11,8 +11,10 @@ module.exports.getUser =  async (req,res)=>{
         const user = await User.findById(req.user.id).select('-password');
         res.json(user);
     } catch (err){
-        console.error(err.message);
-        res.status(500).send("Internal Server Error"); 
+        // console.error(err.message);
+        res.status(500).json({
+            error: {msg: "Internal Server Error"}
+        }); 
     }
 }
 
@@ -31,14 +33,14 @@ module.exports.getToken = async (req,res)=>{
         let user = await  User.findOne({email});
         if(!user){
             return res.status(400).json({
-                msg: 'Invalid credentials'
+                error: {msg: "Invalid credentials"}
             });
         }
         const isMatch = await bcrypt.compare(password, user.password);
 
         if(!isMatch){
             return res.status(400).json({
-                msg: "Invalid credentials"
+                error: {msg: "Invalid credentials"}
             });
         } 
         const payload = {
@@ -50,13 +52,12 @@ module.exports.getToken = async (req,res)=>{
             expiresIn: 360000
         }, (err, token) => {
             if (err) throw err;
-
             return res.json({token});
         });
          
     } catch (err){
         console.error(err);
-        return res.status(500).send("Server Error!");
+        return res.status(500).json({error:{msg:"Server Error!"}});
     }
 
 }

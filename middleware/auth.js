@@ -9,7 +9,7 @@ module.exports = (req,res,next) => {
     //check if not token
     if(!token){
          return res.status(401).json({
-             msg: "No token, Authorization denied!"
+             error: {msg:"No token, Authorization denied!"}
          });
     }
     try{   
@@ -19,7 +19,7 @@ module.exports = (req,res,next) => {
     } catch (err){
         console.error(err);
         res.status(401).json({
-            msg: "Token is not valid!"
+            error:{msg: "Token is not valid!"}
         });
     }
 }

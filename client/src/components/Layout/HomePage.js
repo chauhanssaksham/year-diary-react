@@ -16,9 +16,6 @@ const HomePage = () => {
                         <li>Quia porro exercitationem incidunt cumque facere accusantium reprehenderit.</li>
                         <li>Illo voluptatum modi magnam? Ratione veniam nostrum illum?</li>
                         <li>Optio molestiae illo voluptatibus sapiente voluptates provident voluptatem?</li>
-                        <li>Asperiores modi obcaecati quod facilis! Aperiam, vel non!</li>
-                        <li>Modi numquam sint et dolores. Ratione, laborum sunt.</li>
-                        <li>Repellendus blanditiis aliquam vitae suscipit atque eius itaque.</li>
                     </ul>
                 </p>
             </div>

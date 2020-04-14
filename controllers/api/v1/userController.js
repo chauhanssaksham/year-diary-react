@@ -19,7 +19,7 @@ module.exports.addUser =  async (req,res)=>{
     try{
         let user = await User.findOne({email: email});
         if (user){
-            return res.status(400).json({msg:'User already exists'}); 
+            return res.status(400).json({error:{msg:'User already exists'}}); 
         }
         user = new User({
             name,
@@ -48,7 +48,7 @@ module.exports.addUser =  async (req,res)=>{
 
     } catch (err){
         console.error(err.message);
-        return res.status(500).send("Server Error!");
+        return res.status(500).json({error:{msg:"Server Error!"}});
     }
  
 }
