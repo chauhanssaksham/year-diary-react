@@ -10,13 +10,14 @@ import {
     USER_LOADED,
     LOGIN_SUCCESS,
     LOGOUT,
+    LOGIN_FAIL,
     AUTH_ERROR
 } from '../types';
 
 const AuthState = props => {
     const initialState = {
         token: localStorage.getItem('token'),
-        isAuthenticated: false,
+        isAuthenticated: null,
         loading: true,
         user: null
     };
@@ -64,6 +65,33 @@ const AuthState = props => {
     }
 
     //Login User
+    const login = async (formData) => {
+        try {
+            const res = await axios.post('http://localhost:9000/api/v1/auth', formData, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            /*SET UP MANUAL PROXYING*/
+            dispatch({
+                type: LOGIN_SUCCESS,
+                payload: res.data
+            });
+            loadUser();
+        } catch (err) {
+            if(err.response.data.error){
+                dispatch({type: LOGIN_FAIL});
+                errorNoty(err.response.data.error.msg);
+            }
+            if (err.response.data.errors){
+                dispatch({type: LOGIN_FAIL});
+                err.response.data.errors.forEach(error=>{
+                    errorNoty(error.msg);
+                });
+            }
+            
+        }
+    }
 
     //Logout User
 
@@ -74,7 +102,8 @@ const AuthState = props => {
              loading: state.loading,
              user: state.user,
              register,
-             loadUser
+             loadUser,
+             login
         }}>
             {props.children}
         </AuthContext.Provider>

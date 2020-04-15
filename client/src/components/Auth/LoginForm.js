@@ -1,7 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import axios from 'axios';
-import {errorNoty} from '../../utils/noty'; 
+import {errorNoty} from '../../utils/noty';
+import AuthContext from '../../context/Auth/AuthContext'
+
+
+
 const LoginForm = (props) => {
+    const authContext = useContext(AuthContext);
+    const {login} = authContext;
+
     const [user, setUser] = useState({
         email:'',
         password:''
@@ -13,24 +20,7 @@ const LoginForm = (props) => {
         if (email === '' || password === ''){
             errorNoty( "Please fill in all the fields");
         } else {
-            try{
-            const res = await axios.post('http://localhost:9000/api/v1/auth', user, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            console.log(res.data);
-        } catch(err){
-            // console.log(err.response);
-            if(err.response.data.error){
-                errorNoty(err.response.data.error.msg);
-            }
-            if (err.response.data.errors){
-                err.response.data.errors.forEach(error=>{
-                    errorNoty(error.msg);
-                });
-            }
-        }
+            login(user);
         }
     }
     return (
