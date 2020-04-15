@@ -1,14 +1,13 @@
 import React, {useState, useContext} from 'react'
 import axios from 'axios';
-import {Link} from 'react-router-dom';
 import {errorNoty} from '../../utils/noty'; 
 import AuthContext from '../../context/Auth/AuthContext'
 
 
-const SignupForm = () => {
+const SignupForm = (props) => {
     const authContext = useContext(AuthContext);
     const {register} = authContext;
-
+    
     const [user, setUser] = useState({
         name:'',
         email:'',
@@ -19,7 +18,7 @@ const SignupForm = () => {
     const onChange = e => setUser({...user, [e.target.name]: e.target.value});
     const onSubmit = async e => {
         e.preventDefault();
-        e.preventDefault();
+        console.log(authContext);
         if(name==='' || email==='' || password===''){
             errorNoty("Please fill all the fields");
         } else if (password !== password2){
@@ -63,7 +62,7 @@ const SignupForm = () => {
                                     </button>
                             </div>
                             <div className="col s10 offset-s1 center">
-                                   <p className="blue-text"><Link to="/">Already a user? Log-in here</Link></p>
+                                   <p className="blue-text"><a onClick={props.toggleForm}>Already a user? Log-in here</a></p>
                             </div>
                             </div>
                         </form>

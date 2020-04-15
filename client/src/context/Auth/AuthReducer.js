@@ -27,13 +27,13 @@ export default (state, action)=>{
                 loading: false,
                 user: null
             }
-            case USER_LOADED:
-                return {
-                    ...state,
-                    isAuthenticated: true,
-                    loading: false,
-                    user: action.payload
-                }    
+        case USER_LOADED:
+            return {
+                ...state,
+                isAuthenticated: true,
+                loading: false,
+                user: action.payload
+            }    
         default:
             return state;
     }

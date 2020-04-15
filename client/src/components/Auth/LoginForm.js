@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios';
-import {Link} from 'react-router-dom';
 import {errorNoty} from '../../utils/noty'; 
-const LoginForm = () => {
+const LoginForm = (props) => {
     const [user, setUser] = useState({
         email:'',
         password:''
@@ -59,7 +58,7 @@ const LoginForm = () => {
                                     </button>
                             </div>
                             <div className="col s10 offset-s1 center">
-                                   <p className="blue-text"><Link to="/signup">New Account? Sign-up here</Link></p>
+                                   <p className="blue-text"><a onClick={props.toggleForm}>New Account? Sign-up here</a></p>
                             </div>
                             </div>
                         </form>

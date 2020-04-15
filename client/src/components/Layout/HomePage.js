@@ -1,11 +1,13 @@
-import React from 'react'
-import {Redirect, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, {useState, useContext} from 'react'
 import LoginForm from '../Auth/LoginForm'
 import SignUpForm from '../Auth/SignUpForm'
 
 const HomePage = () => {
+    const [loginForm, setLoginForm] = useState(true);
+    const toggleForm = () => {
+        setLoginForm(!loginForm);
+    }
     return (
-        <Router>
         <div className="row main">
             <div className="col s12 l7 grey lighten-2">
             <div className="home-main">
@@ -21,13 +23,9 @@ const HomePage = () => {
             </div>
             </div>
             <div className="col s12 l5 right-section">
-            <Switch>
-                <Route exact path='/' component={LoginForm} />
-                <Route exact path='/signup' component={SignUpForm} />
-            </Switch>
+                {loginForm?<LoginForm toggleForm={toggleForm}/>:<SignUpForm toggleForm={toggleForm}/>}
             </div>
         </div>
-        </Router>
     )
 }
 
