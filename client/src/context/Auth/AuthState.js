@@ -2,28 +2,42 @@ import React, {useReducer} from 'react';
 import AuthContext from './AuthContext';
 import AuthReducer from './AuthReducer';
 import axios from 'axios';
+import setAuthToken from '../../utils/setAuthToken';
 import {errorNoty} from '../../utils/noty'; 
 import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
     USER_LOADED,
     LOGIN_SUCCESS,
-    LOGOUT
+    LOGOUT,
+    AUTH_ERROR
 } from '../types';
 
 const AuthState = props => {
     const initialState = {
         token: localStorage.getItem('token'),
-        isAuthenticated: null,
+        isAuthenticated: false,
         loading: true,
-        user: null,
-        error: null
+        user: null
     };
 
     const [state, dispatch] = useReducer(AuthReducer, initialState);
 
     //Load User
-
+    const loadUser = async () => {
+        //@ Load the token into a global header, so we dont have to set it everytime
+        if(localStorage.token){
+            setAuthToken(localStorage.token);
+        }
+        //
+        try {
+            const res = await axios.get('http://localhost:9000/api/v1/auth');
+            dispatch({type:USER_LOADED, payload:res.data});  
+        } catch (err) {
+            dispatch({ type: AUTH_ERROR });
+            errorNoty("Error loading the user, please try again!");
+        }
+    };
     //Register User
     const register = async (formData) => {
         try {
@@ -36,6 +50,7 @@ const AuthState = props => {
                 type: REGISTER_SUCCESS,
                 payload: res.data
             });
+            loadUser();
         } catch (err) {
             if(err.response.data.error){
                 errorNoty(err.response.data.error.msg);
@@ -59,7 +74,8 @@ const AuthState = props => {
              isAuthenticated: state.isAuthenticated,
              loading: state.loading,
              user: state.user,
-             register
+             register,
+             loadUser
         }}>
             {props.children}
         </AuthContext.Provider>
