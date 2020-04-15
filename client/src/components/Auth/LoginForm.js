@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-
+import {errorNoty} from '../../utils/noty'; 
 const LoginForm = () => {
     const [user, setUser] = useState({
         email:'',
@@ -12,14 +12,26 @@ const LoginForm = () => {
     const onSubmit = async e => {
         e.preventDefault();
         if (email === '' || password === ''){
-            console.log('Please fill in all fields');
+            errorNoty( "Please fill in all the fields");
         } else {
+            try{
             const res = await axios.post('http://localhost:9000/api/v1/auth', user, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
             console.log(res.data);
+        } catch(err){
+            // console.log(err.response);
+            if(err.response.data.error){
+                errorNoty(err.response.data.error.msg);
+            }
+            if (err.response.data.errors){
+                err.response.data.errors.forEach(error=>{
+                    errorNoty(error.msg);
+                });
+            }
+        }
         }
     }
     return (

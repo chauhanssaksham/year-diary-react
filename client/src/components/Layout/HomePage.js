@@ -10,7 +10,7 @@ const HomePage = () => {
             <div className="col s12 l7 grey lighten-2">
             <div className="home-main">
                 <h3>My Year Diary</h3>
-                <p class="flow-text">
+                <p className="flow-text">
                     <ul>
                         <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li>
                         <li>Quia porro exercitationem incidunt cumque facere accusantium reprehenderit.</li>

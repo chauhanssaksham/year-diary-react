@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import {errorNoty} from '../../utils/noty'; 
 
-const LoginForm = () => {
+
+const SignupForm = () => {
     const [user, setUser] = useState({
         name:'',
         email:'',
@@ -15,16 +17,28 @@ const LoginForm = () => {
         e.preventDefault();
         e.preventDefault();
         if(name==='' || email==='' || password===''){
-            console.log("Please fill all the fields", "danger");
+            errorNoty("Please fill all the fields");
         } else if (password !== password2){
-            console.log("Passwords dont match!", "danger");
+            errorNoty("Passwords dont match!");
         } else {
-            const res = await axios.post('http://localhost:9000/api/v1/users', {name, email, password}, {
-                headers: {
-                    'Content-Type': 'application/json'
+            try {
+                const res = await axios.post('http://localhost:9000/api/v1/users', {name, email, password}, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                console.log(res.data);
+            } catch (err) {
+                if(err.response.data.error){
+                    errorNoty(err.response.data.error.msg);
                 }
-            });
-            console.log(res.data);
+                if (err.response.data.errors){
+                    err.response.data.errors.forEach(error=>{
+                        errorNoty(error.msg);
+                    });
+                }
+            }
+            
         }
     }
     return (
@@ -73,4 +87,4 @@ const LoginForm = () => {
     )
 }
 
-export default LoginForm
+export default SignupForm
