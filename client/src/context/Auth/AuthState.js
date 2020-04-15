@@ -32,7 +32,7 @@ const AuthState = props => {
         }
         //
         try {
-            const res = await axios.get('http://localhost:9000/api/v1/auth');
+            const res = await axios.get('/api/v1/auth');
             dispatch({type:USER_LOADED, payload:res.data});  
         } catch (err) {
             dispatch({ type: AUTH_ERROR });
@@ -41,7 +41,7 @@ const AuthState = props => {
     //Register User
     const register = async (formData) => {
         try {
-            const res = await axios.post('http://localhost:9000/api/v1/users', formData, {
+            const res = await axios.post('/api/v1/users', formData, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -67,7 +67,7 @@ const AuthState = props => {
     //Login User
     const login = async (formData) => {
         try {
-            const res = await axios.post('http://localhost:9000/api/v1/auth', formData, {
+            const res = await axios.post('/api/v1/auth', formData, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
