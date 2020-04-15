@@ -1,10 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import {errorNoty} from '../../utils/noty'; 
+import AuthContext from '../../context/Auth/AuthContext'
 
 
 const SignupForm = () => {
+    const authContext = useContext(AuthContext);
+    const {register} = authContext;
+
     const [user, setUser] = useState({
         name:'',
         email:'',
@@ -21,24 +25,7 @@ const SignupForm = () => {
         } else if (password !== password2){
             errorNoty("Passwords dont match!");
         } else {
-            try {
-                const res = await axios.post('http://localhost:9000/api/v1/users', {name, email, password}, {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-                console.log(res.data);
-            } catch (err) {
-                if(err.response.data.error){
-                    errorNoty(err.response.data.error.msg);
-                }
-                if (err.response.data.errors){
-                    err.response.data.errors.forEach(error=>{
-                        errorNoty(error.msg);
-                    });
-                }
-            }
-            
+            register({name, email, password});
         }
     }
     return (
@@ -62,12 +49,12 @@ const SignupForm = () => {
                             </div>
                             <div className="input-field col s10 offset-s1 auth-input-field">
                                 <i className="material-icons prefix auth-prefix">lock</i>
-                                <input type="password" name="password" value={password} onChange={onChange} required/>
+                                <input type="password" name="password" value={password} onChange={onChange} required minLength='6'/>
                                 <label htmlFor="password">Password</label>
                             </div>
                             <div className="input-field col s10 offset-s1 auth-input-field">
                                 <i className="material-icons prefix auth-prefix">lock</i>
-                                <input type="password" name="password2" value={password2} onChange={onChange} required/>
+                                <input type="password" name="password2" value={password2} onChange={onChange} required minLength='6'/>
                                 <label htmlFor="password2">Confirm Password</label>
                             </div>
                             <div className="input-field col s10 offset-s1 center auth-input-field">
