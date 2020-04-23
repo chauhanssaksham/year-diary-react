@@ -1,3 +1,7 @@
+# IMMEDIATE
+- Add private routing and change according to contact-keeper
+
+
 # Notes
 - Add 3D flip to login and Signup
 
