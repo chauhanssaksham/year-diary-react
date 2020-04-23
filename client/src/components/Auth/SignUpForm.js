@@ -1,5 +1,4 @@
 import React, {useState, useContext} from 'react'
-import axios from 'axios';
 import {errorNoty} from '../../utils/noty'; 
 import AuthContext from '../../context/Auth/AuthContext'
 
@@ -62,7 +61,7 @@ const SignupForm = (props) => {
                                     </button>
                             </div>
                             <div className="col s10 offset-s1 center">
-                                   <p className="blue-text"><a onClick={props.toggleForm}>Already a user? Log-in here</a></p>
+                                   <p className="blue-text"><a onClick={props.toggleForm} href="#!">Already a user? Log-in here</a></p>
                             </div>
                             </div>
                         </form>
